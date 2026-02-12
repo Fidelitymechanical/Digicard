@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martín Pérez - Digital Business Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            padding: 20px;
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .card h1 {
+            margin: 0 0 10px;
+        }
+        .card p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .contact-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .contact-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Martín Pérez</h1>
+        <p>Fidelity Mechanical Solutions</p>
+        <p>Email: martin.perez@fidelitymechanical.com</p>
+        <p>Phone: +1 (555) 123-4567</p>
+        <button class="contact-button" onclick="saveContact()">Save Contact</button>
+    </div>
+    <script>
+        function saveContact() {
+            const contact = {
+                name: 'Martín Pérez',
+                email: 'martin.perez@fidelitymechanical.com',
+                phone: '+1 (555) 123-4567'
+            };
+            // You could use a library like `vCard.js` or code to download this as a vCard file
+            alert('Contact saved!');
+        }
+    </script>
+</body>
+</html>
