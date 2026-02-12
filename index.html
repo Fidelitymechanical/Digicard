@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Martín Pérez | Fidelity Mechanical Solutions</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
   *{margin:0;padding:0;box-sizing:border-box;}
 
   body {
     font-family:'Inter',sans-serif;
-    background: linear-gradient(145deg, #0f0c29, #1a1060, #24243e);
+    background:#0B0F19;
     min-height:100vh;
     display:flex;
     align-items:center;
@@ -20,186 +20,233 @@
   }
 
   .card {
-    background: #ffffff;
-    border-radius: 24px;
-    max-width: 420px;
-    width: 100%;
-    overflow: hidden;
-    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+    background:#111827;
+    border-radius:16px;
+    max-width:420px;
+    width:100%;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,0.06);
+    box-shadow:0 25px 60px rgba(0,0,0,0.5);
   }
 
-  /* ── Header Banner ── */
+  /* ── Header ── */
   .header {
-    background: linear-gradient(135deg, #1E1B4B 0%, #2D1F6E 40%, #1D4ED8 100%);
-    padding: 36px 28px 28px;
-    position: relative;
-    overflow: hidden;
-  }
-  .header::after {
-    content:'';
-    position:absolute;
-    bottom:-30px; right:-30px;
-    width:180px; height:180px;
-    border-radius:50%;
-    background: rgba(99,102,241,0.15);
-  }
-  .header::before {
-    content:'';
-    position:absolute;
-    top:-40px; right:60px;
-    width:120px; height:120px;
-    border-radius:50%;
-    background: rgba(139,92,246,0.1);
+    padding:32px 28px 28px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
   }
 
-  /* ── Logo Mark ── */
-  .logo-wrap {
+  .brand {
     display:flex;
     align-items:center;
-    gap:14px;
-    margin-bottom:24px;
-    position:relative;
-    z-index:2;
+    gap:6px;
+    margin-bottom:28px;
   }
-  .logo-icon {
-    display:flex;
-    flex-direction:column;
-    gap:4px;
-    align-items:flex-start;
+  .brand-fidelity {
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:#FFFFFF;
   }
-  .bar {
-    height:7px;
-    border-radius:2px;
-    transform: skewX(-12deg);
-  }
-  .bar1 { width:32px; background:#7C3AED; }
-  .bar2 { width:42px; background:#4338CA; }
-  .bar3 { width:54px; background:#2563EB; }
-
-  .logo-text { display:flex; flex-direction:column; }
-  .logo-name {
-    font-size:18px;
-    font-weight:900;
-    letter-spacing:3px;
-    color:#ffffff;
-    line-height:1;
-  }
-  .logo-sub {
-    font-size:7.5px;
-    font-weight:400;
-    letter-spacing:3px;
-    color:#A5B4FC;
-    margin-top:4px;
-  }
-  .logo-divider {
-    width:1px;
-    height:36px;
-    background:rgba(165,180,252,0.35);
-    margin: 0 4px;
+  .brand-mechanical {
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:#3B82F6;
   }
 
-  /* ── Name Block ── */
-  .name-block { position:relative; z-index:2; }
+  .name-block { margin-top:4px; }
   .person-name {
-    font-size:28px;
+    font-size:26px;
     font-weight:700;
-    color:#ffffff;
-    letter-spacing:0.5px;
-    line-height:1.1;
+    color:#F9FAFB;
+    letter-spacing:0.3px;
+    line-height:1.2;
   }
   .person-title {
-    font-size:10px;
-    font-weight:600;
-    letter-spacing:3.5px;
-    color:#818CF8;
+    font-size:11px;
+    font-weight:500;
+    letter-spacing:2.5px;
+    color:#6B7280;
     margin-top:6px;
     text-transform:uppercase;
   }
 
-  /* ── Tag line strip ── */
-  .tagline-strip {
-    background: linear-gradient(90deg, #4338CA, #7C3AED);
-    padding: 10px 28px;
-    font-size:9px;
+  /* ── Tagline ── */
+  .tagline {
+    padding:12px 28px;
+    background:rgba(59,130,246,0.08);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    font-size:10px;
     font-weight:600;
-    letter-spacing:3px;
-    color:#E0E7FF;
+    letter-spacing:2.5px;
+    color:#60A5FA;
     text-transform:uppercase;
   }
 
   /* ── Contact Section ── */
   .contact {
-    padding: 28px 28px 10px;
+    padding:20px 28px 8px;
     display:flex;
     flex-direction:column;
-    gap:4px;
+    gap:2px;
   }
 
   .contact-item {
     display:flex;
     align-items:center;
     gap:14px;
-    padding:12px 16px;
-    border-radius:12px;
+    padding:14px 14px;
+    border-radius:10px;
     text-decoration:none;
     transition:background 0.2s;
     cursor:pointer;
   }
-  .contact-item:hover { background:#F5F3FF; }
+  .contact-item:hover { background:rgba(59,130,246,0.08); }
 
   .icon-wrap {
-    width:38px; height:38px;
+    width:40px;height:40px;
     border-radius:10px;
     display:flex;
     align-items:center;
     justify-content:center;
     flex-shrink:0;
+    background:rgba(59,130,246,0.12);
+    border:1px solid rgba(59,130,246,0.15);
   }
-  .icon-phone { background:linear-gradient(135deg,#4338CA,#6D28D9); }
-  .icon-email { background:linear-gradient(135deg,#1D4ED8,#4338CA); }
-  .icon-web   { background:linear-gradient(135deg,#6D28D9,#7C3AED); }
-
-  .icon-wrap svg { width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
+  .icon-wrap svg {
+    width:18px;height:18px;
+    fill:none;
+    stroke:#3B82F6;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
 
   .contact-details { display:flex; flex-direction:column; }
-  .contact-label { font-size:9px; font-weight:600; letter-spacing:2px; color:#9CA3AF; text-transform:uppercase; }
-  .contact-value { font-size:14px; font-weight:600; color:#1E1B4B; margin-top:1px; }
+  .contact-label {
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:2px;
+    color:#4B5563;
+    text-transform:uppercase;
+  }
+  .contact-value {
+    font-size:14px;
+    font-weight:600;
+    color:#E5E7EB;
+    margin-top:2px;
+  }
 
-  /* ── Save Button ── */
-  .save-wrap { padding:20px 28px 28px; }
-  .save-btn {
+  /* ── Buttons ── */
+  .actions {
+    padding:20px 28px 24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .btn-primary {
     display:flex;
     align-items:center;
     justify-content:center;
     gap:10px;
     width:100%;
-    padding:16px;
-    border-radius:14px;
-    background:linear-gradient(135deg,#1E1B4B,#2563EB);
+    padding:15px;
+    border-radius:10px;
+    background:#3B82F6;
     color:#fff;
     font-family:'Inter',sans-serif;
     font-size:13px;
     font-weight:700;
-    letter-spacing:2px;
+    letter-spacing:1.5px;
     text-transform:uppercase;
     border:none;
     cursor:pointer;
     text-decoration:none;
-    transition:opacity 0.2s, transform 0.1s;
+    transition:background 0.2s, transform 0.1s;
   }
-  .save-btn:hover { opacity:0.9; transform:translateY(-1px); }
-  .save-btn svg { width:18px; height:18px; fill:none; stroke:#fff; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+  .btn-primary:hover { background:#2563EB; transform:translateY(-1px); }
+  .btn-primary svg {
+    width:17px;height:17px;
+    fill:none;
+    stroke:#fff;
+    stroke-width:2.2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  .btn-outline {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    width:100%;
+    padding:15px;
+    border-radius:10px;
+    background:transparent;
+    color:#D1D5DB;
+    font-family:'Inter',sans-serif;
+    font-size:13px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    border:1px solid rgba(255,255,255,0.12);
+    cursor:pointer;
+    text-decoration:none;
+    transition:background 0.2s, border-color 0.2s;
+  }
+  .btn-outline:hover {
+    background:rgba(255,255,255,0.04);
+    border-color:rgba(255,255,255,0.2);
+  }
+  .btn-outline svg {
+    width:17px;height:17px;
+    fill:none;
+    stroke:#D1D5DB;
+    stroke-width:2.2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  /* ── Trust Badges ── */
+  .badges {
+    padding:0 28px 20px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .badge {
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    padding:6px 12px;
+    border-radius:20px;
+    background:rgba(59,130,246,0.06);
+    border:1px solid rgba(59,130,246,0.1);
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:0.5px;
+    color:#9CA3AF;
+  }
+  .badge svg {
+    width:12px;height:12px;
+    fill:none;
+    stroke:#3B82F6;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
 
   /* ── Footer ── */
   .footer {
-    border-top:1px solid #EEF2FF;
-    padding:14px 28px;
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding:16px 28px;
     text-align:center;
     font-size:9px;
     letter-spacing:2px;
-    color:#C7D2FE;
+    color:#374151;
     font-weight:500;
-    background:#FAFAFA;
     text-transform:uppercase;
   }
 </style>
@@ -210,17 +257,9 @@
 
   <!-- Header -->
   <div class="header">
-    <div class="logo-wrap">
-      <div class="logo-icon">
-        <div class="bar bar1"></div>
-        <div class="bar bar2"></div>
-        <div class="bar bar3"></div>
-      </div>
-      <div class="logo-divider"></div>
-      <div class="logo-text">
-        <span class="logo-name">FIDELITY</span>
-        <span class="logo-sub">MECHANICAL SOLUTIONS™</span>
-      </div>
+    <div class="brand">
+      <span class="brand-fidelity">FIDELITY</span>
+      <span class="brand-mechanical">MECHANICAL</span>
     </div>
     <div class="name-block">
       <div class="person-name">Martín Pérez</div>
@@ -229,13 +268,13 @@
   </div>
 
   <!-- Tagline -->
-  <div class="tagline-strip">Precision · Trust · Technical Excellence</div>
+  <div class="tagline">Precision · Trust · Technical Excellence</div>
 
   <!-- Contact Items -->
   <div class="contact">
 
     <a class="contact-item" href="tel:7132012842">
-      <div class="icon-wrap icon-phone">
+      <div class="icon-wrap">
         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 13.5 19.79 19.79 0 01.1 4.87 2 2 0 012.11 2.7h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
       </div>
       <div class="contact-details">
@@ -245,7 +284,7 @@
     </a>
 
     <a class="contact-item" href="mailto:Martin@fidelitymechanical.com">
-      <div class="icon-wrap icon-email">
+      <div class="icon-wrap">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
       </div>
       <div class="contact-details">
@@ -255,7 +294,7 @@
     </a>
 
     <a class="contact-item" href="https://fidelitymechanicalsolutions.com" target="_blank">
-      <div class="icon-wrap icon-web">
+      <div class="icon-wrap">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
       </div>
       <div class="contact-details">
@@ -266,15 +305,35 @@
 
   </div>
 
-  <!-- Save Contact -->
-  <div class="save-wrap">
-    <a class="save-btn" href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:Mart%C3%ADn%20P%C3%A9rez%0AORG:Fidelity%20Mechanical%20Solutions%0ATITLE:Field%20Operations%0ATEL:7132012842%0AEMAIL:Martin%40fidelitymechanical.com%0AURL:https%3A%2F%2Ffidelitymechanicalsolutions.com%0AEND:VCARD" download="Martin_Perez_FMS.vcf">
+  <!-- Action Buttons -->
+  <div class="actions">
+    <a class="btn-primary" href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:Mart%C3%ADn%20P%C3%A9rez%0AORG:Fidelity%20Mechanical%20Solutions%0ATITLE:Field%20Operations%0ATEL:7132012842%0AEMAIL:Martin%40fidelitymechanical.com%0AURL:https%3A%2F%2Ffidelitymechanicalsolutions.com%0AEND:VCARD" download="Martin_Perez_FMS.vcf">
       <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
       Save Contact
     </a>
+    <a class="btn-outline" href="https://fidelitymechanicalsolutions.com" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      View Services
+    </a>
   </div>
 
-  <div class="footer">Fidelity Mechanical Solutions™ · HVAC Systems</div>
+  <!-- Trust Badges -->
+  <div class="badges">
+    <span class="badge">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Licensed & Insured
+    </span>
+    <span class="badge">
+      <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      HVAC Systems
+    </span>
+    <span class="badge">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Same-Day Service
+    </span>
+  </div>
+
+  <div class="footer">Fidelity Mechanical Solutions&trade; &middot; Houston, TX</div>
 
 </div>
 
