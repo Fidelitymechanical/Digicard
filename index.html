@@ -411,7 +411,7 @@
   <div class="card-actions">
     <div class="qr-wrap">
       <div id="qrcode"></div>
-      <div class="qr-label">Scan · Website</div>
+      <div class="qr-label">Scan · Open Card</div>
     </div>
     <div class="btns">
       <button class="btn btn-primary" onclick="downloadVCard()" id="btnSave">Save Contact</button>
@@ -436,9 +436,9 @@
 <script data-goatcounter="https://mperez.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <script>
-  // Generate QR code linking to main site
+  // Generate QR code linking to this card
   new QRCode(document.getElementById('qrcode'), {
-    text: 'https://fidelitymechanicalsolutions.com',
+    text: 'https://fidelitymechanical.github.io/Digicard',
     width: 90,
     height: 90,
     colorDark: '#ffffff',
@@ -484,7 +484,7 @@
     const shareData = {
       title: 'Martín Pérez · Fidelity Mechanical Solutions',
       text: 'Licensed HVAC · Houston, TX · 713-201-2842',
-      url: 'https://fidelitymechanicalsolutions.com'
+      url: 'https://fidelitymechanical.github.io/Digicard'
     };
 
     if (navigator.share) {
