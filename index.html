@@ -35,11 +35,11 @@
   -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta name="theme-color" content="#0f1a27">
+  <meta name="theme-color" content="#080f18">
   <title>Martín Pérez · Fidelity Mechanical Solutions · Houston HVAC</title>
   <meta name="description" content="Martín Pérez · Founder & Field Operations Lead · Fidelity Mechanical Solutions · Licensed HVAC Contractor · Houston, TX · 713-201-2842">
-  <meta name="author" content="Martin Pérez">
-  <meta name="rights" content="© 2025–2026 Martin Pérez. All rights reserved.">
+  <meta name="author" content="Martín Pérez">
+  <meta name="rights" content="© 2025–2026 Martín Pérez. All rights reserved.">
 
   <script type="application/ld+json">
   {
@@ -70,27 +70,32 @@
   <meta property="og:description" content="Licensed & Insured HVAC Contractor · Houston, TX · 713-201-2842">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://fidelitymechanicalsolutions.com">
-  <meta property="og:site_name" content="Fidelity Mechanical Solutions">
   <link rel="canonical" href="https://fidelitymechanicalsolutions.com">
   <meta name="robots" content="index, follow">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Sans:wght@300;400;500&family=Martian+Mono:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     /* ═══════════════════════════════════════
-       GENESIS COLOR SYSTEM
+       FMS · ELEVATED DESIGN SYSTEM
     ═══════════════════════════════════════ */
     :root {
-      --navy:      #0f1a27;
-      --navy-deep: #070d14;
-      --navy-mid:  #162030;
-      --navy-lt:   #1d2d40;
-      --white:     #ffffff;
-      --blue:      #4a7fa5;
-      --blue-lt:   #6499bd;
-      --border-dk: rgba(255,255,255,0.08);
-      --border-blue: rgba(74,127,165,0.25);
+      --ink:       #080f18;
+      --ink-mid:   #0d1824;
+      --ink-lt:    #142030;
+      --ink-ltr:   #1a2a3d;
+      --white:     #f5f2ee;
+      --white-dim: rgba(245,242,238,0.55);
+      --white-faint: rgba(245,242,238,0.12);
+      --steel:     #3d6a8a;
+      --steel-lt:  #5a8db0;
+      --steel-glow:rgba(90,141,176,0.18);
+      --gold:      #b8976a;
+      --gold-lt:   #d4b48a;
+      --gold-glow: rgba(184,151,106,0.15);
+      --border:    rgba(245,242,238,0.06);
+      --border-mid:rgba(245,242,238,0.1);
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -98,281 +103,487 @@
 
     body {
       min-height: 100dvh;
-      background: var(--navy-deep);
+      background: var(--ink);
       color: var(--white);
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Instrument Sans', sans-serif;
       font-weight: 300;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 28px 16px 36px;
+      padding: 32px 16px 40px;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── AMBIENT BACKGROUND ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(61,106,138,0.09) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(184,151,106,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 200px;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── CARD WRAPPER (for entry animation) ── */
+    .card-wrap {
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(22px);
+      animation: cardRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.1s forwards;
+    }
+
+    @keyframes cardRise {
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* ── CARD ── */
     .card {
       width: 100%;
-      max-width: 420px;
-      background: var(--navy);
-      border: 1px solid var(--border-dk);
+      max-width: 400px;
+      background: var(--ink-mid);
+      border: 1px solid var(--border-mid);
       position: relative;
       overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(245,242,238,0.03),
+        0 32px 80px rgba(0,0,0,0.6),
+        0 8px 24px rgba(0,0,0,0.4),
+        inset 0 1px 0 rgba(245,242,238,0.07);
     }
 
-    /* Ghost "F" watermark — matches the hero letterform */
+    /* Ghost "F" — grand typographic watermark */
     .card::before {
       content: 'F';
       position: absolute;
-      right: -0.06em;
-      bottom: -0.1em;
-      font-family: 'Playfair Display', serif;
-      font-size: 320px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.025);
+      right: -0.04em;
+      bottom: -0.12em;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 360px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(245,242,238,0.022);
       line-height: 1;
       pointer-events: none;
       user-select: none;
     }
 
-    /* ── TOP BAR — Genesis division label style ── */
+    /* ── TOP BAR ── */
     .card-topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 11px 24px;
-      border-bottom: 1px solid var(--border-dk);
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,15,24,0.4);
     }
     .topbar-mark {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.32em;
+      font-family: 'Martian Mono', monospace;
+      font-size: 8.5px;
+      letter-spacing: 0.38em;
       text-transform: uppercase;
-      color: var(--blue-lt);
+      color: var(--gold);
+      opacity: 0.85;
     }
     .topbar-loc {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.12em;
+      font-family: 'Martian Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.2);
+      color: rgba(245,242,238,0.18);
+    }
+
+    /* ── THIN RULE ACCENT ── */
+    .accent-rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--steel-lt) 70%, transparent 100%);
+      opacity: 0.35;
     }
 
     /* ── IDENTITY ── */
     .card-identity {
-      padding: 32px 28px 24px;
+      padding: 34px 28px 26px;
       position: relative;
       z-index: 1;
     }
     .card-eyebrow {
-      font-family: 'DM Mono', monospace;
-      font-size: 8px;
-      letter-spacing: 0.35em;
+      font-family: 'Martian Mono', monospace;
+      font-size: 7.5px;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--blue);
-      display: block;
-      margin-bottom: 20px;
+      color: var(--steel-lt);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: fadeSlide 0.6s ease 0.45s forwards;
     }
-    .card-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 400;
-      font-size: 44px;
-      line-height: 1.07;
-      color: var(--white);
-      letter-spacing: -0.01em;
-      margin-bottom: 12px;
-    }
-    .card-role {
-      font-family: 'DM Mono', monospace;
-      font-size: 9px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-bottom: 6px;
-    }
-    .card-company {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 13px;
-      color: rgba(255,255,255,0.45);
-      font-weight: 300;
+    .card-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 1px;
+      background: var(--steel-lt);
+      opacity: 0.6;
     }
 
-    /* ── CONTACT ROWS — Genesis contact section style ── */
+    .card-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 58px;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 16px;
+      opacity: 0;
+      animation: fadeSlide 0.7s ease 0.55s forwards;
+    }
+
+    /* Shimmer pass on name */
+    .card-name span {
+      display: inline-block;
+      background: linear-gradient(105deg,
+        var(--white) 0%,
+        var(--white) 40%,
+        var(--gold-lt) 50%,
+        var(--white) 60%,
+        var(--white) 100%
+      );
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 6s ease 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 200% 0; }
+      50%       { background-position: -100% 0; }
+    }
+
+    .card-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      opacity: 0;
+      animation: fadeSlide 0.6s ease 0.65s forwards;
+    }
+    .card-role {
+      font-family: 'Martian Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(245,242,238,0.28);
+    }
+    .card-company {
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 12.5px;
+      color: rgba(245,242,238,0.42);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── CONTACT ROWS ── */
     .card-contact {
-      border-top: 1px solid var(--border-dk);
+      border-top: 1px solid var(--border);
       position: relative;
       z-index: 1;
     }
     .crow {
       display: grid;
-      grid-template-columns: 68px 1fr;
+      grid-template-columns: 62px 1fr 20px;
       align-items: center;
-      padding: 15px 28px;
-      border-bottom: 1px solid var(--border-dk);
-      border-left: 3px solid transparent;
+      padding: 15px 24px 15px 28px;
+      border-bottom: 1px solid var(--border);
       text-decoration: none;
-      transition: background 0.2s, border-left-color 0.2s;
+      position: relative;
+      transition: background 0.25s ease;
+      overflow: hidden;
+    }
+    .crow::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--gold), var(--steel-lt));
+      opacity: 0;
+      transition: opacity 0.25s ease;
     }
     .crow:last-child { border-bottom: none; }
-    .crow:hover {
-      background: var(--navy-lt);
-      border-left-color: var(--blue);
-    }
+    .crow:hover { background: rgba(245,242,238,0.03); }
+    .crow:hover::after { opacity: 1; }
+    .crow:hover .crow-val { color: var(--white); }
+    .crow:hover .crow-arrow { opacity: 0.6; transform: translate(2px, -2px); }
+
     .crow-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 8px;
-      letter-spacing: 0.25em;
+      font-family: 'Martian Mono', monospace;
+      font-size: 7.5px;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.22);
+      color: rgba(245,242,238,0.2);
     }
     .crow-val {
-      font-size: 14px;
-      color: rgba(255,255,255,0.68);
+      font-size: 13px;
+      color: rgba(245,242,238,0.58);
       font-weight: 300;
-    }
-    .crow.primary .crow-val {
-      color: var(--blue-lt);
-      font-weight: 400;
-      font-size: 17px;
+      transition: color 0.25s ease;
       letter-spacing: 0.01em;
     }
+    .crow-arrow {
+      font-size: 11px;
+      color: rgba(245,242,238,0.2);
+      transition: opacity 0.25s, transform 0.25s;
+      text-align: right;
+      opacity: 0;
+    }
+    .crow.primary .crow-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+    .crow.primary .crow-label {
+      color: var(--gold);
+      opacity: 0.85;
+    }
+    .crow.primary:hover .crow-val { color: var(--gold-lt); }
 
     /* ── META ROWS ── */
     .card-meta {
-      border-top: 1px solid var(--border-dk);
+      border-top: 1px solid var(--border);
+      background: rgba(8,15,24,0.25);
       position: relative;
       z-index: 1;
     }
     .mrow {
       display: grid;
-      grid-template-columns: 68px 1fr;
+      grid-template-columns: 62px 1fr;
       align-items: center;
-      padding: 12px 28px;
-      border-bottom: 1px solid var(--border-dk);
+      padding: 13px 24px 13px 28px;
+      border-bottom: 1px solid var(--border);
     }
     .mrow:last-child { border-bottom: none; }
     .mrow-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 8px;
-      letter-spacing: 0.25em;
+      font-family: 'Martian Mono', monospace;
+      font-size: 7.5px;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.18);
+      color: rgba(245,242,238,0.16);
     }
     .mrow-val {
       font-size: 12px;
-      color: rgba(255,255,255,0.35);
+      color: rgba(245,242,238,0.3);
       font-weight: 300;
-      line-height: 1.55;
+      line-height: 1.5;
     }
 
-    /* ── ACTIONS — QR code + buttons ── */
+    /* Availability pulse dot */
+    .avail {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .avail-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #4caf7a;
+      box-shadow: 0 0 0 0 rgba(76,175,122,0.5);
+      animation: pulse-green 2.5s ease infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-green {
+      0%   { box-shadow: 0 0 0 0 rgba(76,175,122,0.5); }
+      60%  { box-shadow: 0 0 0 5px rgba(76,175,122,0); }
+      100% { box-shadow: 0 0 0 0 rgba(76,175,122,0); }
+    }
+
+    /* ── DIVIDER RULE ── */
+    .section-rule {
+      height: 1px;
+      margin: 0 28px;
+      background: linear-gradient(90deg, var(--border-mid) 0%, transparent 100%);
+    }
+
+    /* ── ACTIONS ── */
     .card-actions {
       display: flex;
-      gap: 20px;
+      gap: 18px;
       align-items: center;
-      padding: 24px 28px;
-      border-top: 1px solid var(--border-dk);
+      padding: 22px 28px;
+      border-top: 1px solid var(--border);
       position: relative;
       z-index: 1;
     }
-    .qr-wrap { flex-shrink: 0; }
+    .qr-wrap {
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .qr-frame {
+      padding: 7px;
+      background: var(--white);
+      border-radius: 2px;
+    }
     #qrcode canvas,
     #qrcode img { display: block; }
     .qr-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 7px;
-      letter-spacing: 0.2em;
+      font-family: 'Martian Mono', monospace;
+      font-size: 6.5px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.18);
-      text-align: center;
-      margin-top: 6px;
+      color: rgba(245,242,238,0.14);
     }
+
     .btns {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
     }
     .btn {
-      font-family: 'DM Sans', sans-serif;
-      font-size: 10px;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 9.5px;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       padding: 14px 16px;
       cursor: pointer;
-      transition: all 0.25s;
+      transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
       text-align: center;
       width: 100%;
       border: none;
+      position: relative;
+      overflow: hidden;
     }
-    .btn-primary {
-      color: var(--white);
-      background: var(--blue);
-      border: 1px solid var(--blue);
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.07);
+      opacity: 0;
+      transition: opacity 0.2s;
     }
-    .btn-primary:hover { background: var(--blue-lt); border-color: var(--blue-lt); }
-    .btn-ghost {
-      color: rgba(255,255,255,0.45);
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-    .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+    .btn:hover::before { opacity: 1; }
+    .btn:active { transform: scale(0.98); }
 
-    /* ── CARD FOOTER ── */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--steel) 0%, var(--steel-lt) 100%);
+      color: var(--white);
+      border: 1px solid rgba(90,141,176,0.4);
+      box-shadow: 0 4px 16px rgba(61,106,138,0.3), inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+    .btn-primary:hover {
+      box-shadow: 0 6px 24px rgba(61,106,138,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
+      transform: translateY(-1px);
+    }
+    .btn-gold {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(184,151,106,0.28);
+      letter-spacing: 0.2em;
+    }
+    .btn-gold:hover {
+      background: rgba(184,151,106,0.07);
+      border-color: rgba(184,151,106,0.5);
+      transform: translateY(-1px);
+    }
+
+    /* ── FOOTER ── */
     .card-footer {
       display: flex;
       justify-content: space-between;
       padding: 10px 28px;
-      border-top: 1px solid var(--border-dk);
+      border-top: 1px solid var(--border);
+      background: rgba(8,15,24,0.3);
       position: relative;
       z-index: 1;
     }
     .card-footer span {
-      font-family: 'DM Mono', monospace;
-      font-size: 8px;
+      font-family: 'Martian Mono', monospace;
+      font-size: 7.5px;
       letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.12);
+      color: rgba(245,242,238,0.1);
     }
 
     /* ── PAGE NOTE ── */
     .page-note {
-      margin-top: 20px;
-      font-family: 'DM Mono', monospace;
-      font-size: 8px;
-      letter-spacing: 0.2em;
+      margin-top: 22px;
+      font-family: 'Martian Mono', monospace;
+      font-size: 7.5px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.08);
+      color: rgba(245,242,238,0.06);
       text-align: center;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeSlide 0.5s ease 1.1s forwards;
     }
 
     /* ── FOCUS ── */
-    :focus-visible { outline: 2px solid var(--blue-lt); outline-offset: 2px; }
+    :focus-visible { outline: 2px solid var(--steel-lt); outline-offset: 3px; }
 
-    /* ── SMALL SCREENS ── */
+    /* ── MOBILE ── */
     @media (max-width: 380px) {
-      body { padding: 16px 12px 24px; }
-      .card-name { font-size: 38px; }
+      body { padding: 16px 12px 28px; }
+      .card-name { font-size: 48px; }
       .card-actions { flex-direction: column-reverse; align-items: stretch; }
-      .qr-wrap { display: flex; flex-direction: column; align-items: center; }
+      .qr-wrap { flex-direction: row; justify-content: center; align-items: center; }
     }
   </style>
 </head>
 <body>
 
+<div class="card-wrap">
 <article class="card" itemscope itemtype="https://schema.org/Person">
 
   <!-- Top bar -->
   <div class="card-topbar">
-    <span class="topbar-mark">FMS</span>
-    <span class="topbar-loc">Houston, TX · Est. 2025</span>
+    <span class="topbar-mark">FMS · 001</span>
+    <span class="topbar-loc">Houston, TX · Est. Feb 2025</span>
   </div>
+
+  <!-- Gradient rule -->
+  <div class="accent-rule"></div>
 
   <!-- Identity -->
   <div class="card-identity">
     <span class="card-eyebrow">Licensed &amp; Insured HVAC Contractor</span>
-    <h1 class="card-name" itemprop="name">Martín<br>Pérez</h1>
-    <div class="card-role" itemprop="jobTitle">Founder · Field Operations Lead</div>
-    <div class="card-company" itemprop="worksFor">Fidelity Mechanical Solutions</div>
+    <h1 class="card-name" itemprop="name">
+      <span>Martín<br>Pérez</span>
+    </h1>
+    <div class="card-title-block">
+      <div class="card-role" itemprop="jobTitle">Founder · Field Operations Lead</div>
+      <div class="card-company" itemprop="worksFor">Fidelity Mechanical Solutions</div>
+    </div>
   </div>
 
   <!-- Contact -->
@@ -380,18 +591,22 @@
     <a href="tel:7132012842" class="crow primary" itemprop="telephone">
       <span class="crow-label">Call</span>
       <span class="crow-val">713-201-2842</span>
+      <span class="crow-arrow">↗</span>
     </a>
     <a href="sms:7132012842" class="crow">
       <span class="crow-label">Text</span>
       <span class="crow-val">713-201-2842</span>
+      <span class="crow-arrow">↗</span>
     </a>
     <a href="mailto:nvvtruelife@outlook.com" class="crow" itemprop="email">
       <span class="crow-label">Email</span>
       <span class="crow-val">nvvtruelife@outlook.com</span>
+      <span class="crow-arrow">↗</span>
     </a>
     <a href="https://fidelitymechanicalsolutions.com" class="crow" target="_blank" rel="noopener" itemprop="url">
       <span class="crow-label">Web</span>
       <span class="crow-val">fidelitymechanicalsolutions.com</span>
+      <span class="crow-arrow">↗</span>
     </a>
   </div>
 
@@ -399,10 +614,15 @@
   <div class="card-meta">
     <div class="mrow">
       <span class="mrow-label">Hours</span>
-      <span class="mrow-val">Mon – Sun · 7AM – 8PM</span>
+      <span class="mrow-val">
+        <span class="avail">
+          <span class="avail-dot" id="availDot"></span>
+          <span id="availText">Mon – Sun · 7 AM – 8 PM</span>
+        </span>
+      </span>
     </div>
     <div class="mrow">
-      <span class="mrow-label">Area</span>
+      <span class="mrow-label">Service</span>
       <span class="mrow-val">Greater Houston &amp; Surrounding Communities</span>
     </div>
   </div>
@@ -410,12 +630,14 @@
   <!-- QR + Buttons -->
   <div class="card-actions">
     <div class="qr-wrap">
-      <div id="qrcode"></div>
-      <div class="qr-label">Scan · Website</div>
+      <div class="qr-frame">
+        <div id="qrcode"></div>
+      </div>
+      <div class="qr-label">Scan · Site</div>
     </div>
     <div class="btns">
       <button class="btn btn-primary" onclick="downloadVCard()" id="btnSave">Save Contact</button>
-      <button class="btn btn-ghost" onclick="shareCard()" id="btnShare">Share Card</button>
+      <button class="btn btn-gold" onclick="shareCard()" id="btnShare">Share Card</button>
     </div>
   </div>
 
@@ -426,33 +648,49 @@
   </div>
 
 </article>
+</div>
 
 <p class="page-note">Digital Business Card · Fidelity Mechanical Solutions</p>
 
-<!-- QR Code library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<!-- Analytics -->
 <script data-goatcounter="https://mperez.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 
 <script>
-  // Generate QR code linking to main site
+  // ── QR Code
   new QRCode(document.getElementById('qrcode'), {
     text: 'https://fidelitymechanicalsolutions.com',
-    width: 90,
-    height: 90,
-    colorDark: '#ffffff',
-    colorLight: '#0f1a27',
+    width: 88,
+    height: 88,
+    colorDark: '#080f18',
+    colorLight: '#f5f2ee',
     correctLevel: QRCode.CorrectLevel.M
   });
 
-  // Detect share capability and label accordingly
+  // ── Availability indicator
+  (function() {
+    const dot  = document.getElementById('availDot');
+    const text = document.getElementById('availText');
+    const now  = new Date();
+    const h    = now.getHours();
+    const open = h >= 7 && h < 20;
+    if (!open) {
+      dot.style.background = '#e05a5a';
+      dot.style.animation  = 'none';
+      dot.style.boxShadow  = 'none';
+      text.textContent     = 'Closed · Opens 7 AM';
+    } else {
+      text.textContent = 'Open Now · Mon–Sun 7 AM–8 PM';
+    }
+  })();
+
+  // ── Share button label
   if (!navigator.share) {
     document.getElementById('btnShare').textContent = 'Copy Link';
   }
 
-  // vCard download
+  // ── vCard download
   function downloadVCard() {
+    const btn = document.getElementById('btnSave');
     const vcard = [
       'BEGIN:VCARD',
       'VERSION:3.0',
@@ -469,33 +707,36 @@
     ].join('\r\n');
 
     const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
     a.download = 'martin-perez-fms.vcf';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+
+    const orig = btn.textContent;
+    btn.textContent = 'Saved ✓';
+    setTimeout(() => { btn.textContent = orig; }, 2200);
   }
 
-  // Share / copy link
+  // ── Share / copy link
   async function shareCard() {
     const shareData = {
       title: 'Martín Pérez · Fidelity Mechanical Solutions',
-      text: 'Licensed HVAC · Houston, TX · 713-201-2842',
-      url: 'https://fidelitymechanicalsolutions.com'
+      text:  'Licensed HVAC · Houston, TX · 713-201-2842',
+      url:   'https://fidelitymechanicalsolutions.com'
     };
-
+    const btn = document.getElementById('btnShare');
     if (navigator.share) {
       try { await navigator.share(shareData); } catch (_) {}
     } else {
-      const btn = document.getElementById('btnShare');
       try {
         await navigator.clipboard.writeText(shareData.url);
         const orig = btn.textContent;
-        btn.textContent = 'Link Copied';
-        setTimeout(() => { btn.textContent = orig; }, 2000);
+        btn.textContent = 'Copied ✓';
+        setTimeout(() => { btn.textContent = orig; }, 2200);
       } catch (_) {}
     }
   }
